@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методика — Реставрация.Цифра</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <span class="logo__icon">🏛️</span>
+                    <div class="logo__text">
+                        <span class="logo__title">Реставрация.Цифра</span>
+                        <span class="logo__subtitle">Библиотека 3D-моделей</span>
+                    </div>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="nav__link">Главная</a>
+                    <a href="methodology.html" class="nav__link active">Методика</a>
+                    <a href="catalog.html" class="nav__link">Каталог</a>
+                    <a href="analogs.html" class="nav__link">Аналоги</a>
+                    <a href="upload.html" class="nav__link">Загрузить</a>
+                    <a href="contacts.html" class="nav__link">Контакты</a>
+                </nav>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="index.html">Главная</a> <span>/</span> <span>Методика</span>
+        </div>
+    </div>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="section__tag">Методика</span>
+            <h1 class="page-hero__title">Как работает <span class="accent">«Реставрация.Цифра»</span></h1>
+            <p class="page-hero__text">Пошаговая методика восстановления утраченных архитектурных элементов с использованием смартфона, бесплатного ПО и настольного 3D-принтера или ЧПУ-станка.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="timeline">
+                <div class="timeline__item">
+                    <div class="timeline__marker">01</div>
+                    <div class="timeline__content">
+                        <h3>Подготовка объекта</h3>
+                        <p>Очистка поверхности элемента от пыли и загрязнений, установка реперных меток (контрастных маркеров) для улучшения точности совмещения кадров. Съёмка проводится при равномерном рассеянном освещении — в пасмурную погоду или в тени здания.</p>
+                        <div class="timeline__meta"><span>⏱️ Время: 15–30 минут</span></div>
+                    </div>
+                </div>
+                <div class="timeline__item">
+                    <div class="timeline__marker">02</div>
+                    <div class="timeline__content">
+                        <h3>Фотограмметрическая съёмка</h3>
+                        <p>Съёмка смартфоном с камерой от 12 Мп. Камера перемещается по окружности с шагом 10–15°, перекрытие соседних кадров 60–80%. Для элемента 30–50 см достаточно 40–60 фотографий с нескольких высот.</p>
+                        <div class="timeline__meta"><span>⏱️ Время: 30–90 минут</span><span>📱 Оборудование: смартфон</span></div>
+                    </div>
+                </div>
+                <div class="timeline__item">
+                    <div class="timeline__marker">03</div>
+                    <div class="timeline__content">
+                        <h3>Построение облака точек</h3>
+                        <p>Фотографии импортируются в Meshroom (AliceVision). Программа автоматически определяет общие точки на соседних кадрах, строит разреженное, а затем уплотнённое облако точек до нескольких миллионов точек.</p>
+                        <div class="timeline__meta"><span>💻 ПО: Meshroom (бесплатно)</span></div>
+                    </div>
+                </div>
+                <div class="timeline__item">
+                    <div class="timeline__marker">04</div>
+                    <div class="timeline__content">
+                        <h3>Построение полигональной сетки</h3>
+                        <p>На основе облака точек строится mesh-модель. Для декоративного элемента 30–50 см оптимальное количество полигонов — 500 000 – 2 000 000.</p>
+                    </div>
+                </div>
+                <div class="timeline__item">
+                    <div class="timeline__marker">05</div>
+                    <div class="timeline__content">
+                        <h3>Очистка модели в Blender</h3>
+                        <p>Удаление шумов и артефактов, лишних полигонов, заполнение отверстий, сглаживание шероховатостей.</p>
+                        <div class="timeline__meta"><span>💻 ПО: Blender (бесплатно)</span></div>
+                    </div>
+                </div>
+                <div class="timeline__item timeline__item--highlight">
+                    <div class="timeline__marker">06</div>
+                    <div class="timeline__content">
+                        <h3>🔄 Симметризация и достройка</h3>
+                        <p><strong>Ключевой приём проекта.</strong> Если элемент утрачен частично (например, половина наличника), сохранившаяся половина зеркально отражается в 3D-редакторе. Обе половины «сшиваются» в единое целое с плавным переходом. При необходимости добавляются утраченные детали по архивным фотографиям.</p>
+                        <div class="timeline__meta"><span>✨ Уникальная особенность методики</span></div>
+                    </div>
+                </div>
+                <div class="timeline__item">
+                    <div class="timeline__marker">07</div>
+                    <div class="timeline__content">
+                        <h3>Подготовка к производству</h3>
+                        <p>Проверка замкнутости модели, толщины стенок (не менее 2 мм), ориентации на платформе. Экспорт в STL (для 3D-печати) или STEP (для ЧПУ-фрезеровки).</p>
+                        <div class="timeline__meta"><span>⏱️ Общее время обработки: 4–8 часов</span></div>
+                    </div>
+                </div>
+                <div class="timeline__item">
+                    <div class="timeline__marker">08</div>
+                    <div class="timeline__content">
+                        <h3>Изготовление копии</h3>
+                        <p><strong>FDM 3D-печать</strong> — для элементов до 30 см (пластик PLA/ABS, 6–24 часа, 200–800 ₽).<br><strong>ЧПУ-фрезеровка</strong> — для элементов более 30 см (пенопласт/дерево, 2–8 часов, 500–2 000 ₽).<br><strong>Формование и литьё</strong> — для тиражирования (силиконовая форма 2 000–5 000 ₽, копия 500–1 500 ₽).</p>
+                    </div>
+                </div>
+                <div class="timeline__item">
+                    <div class="timeline__marker">09</div>
+                    <div class="timeline__content">
+                        <h3>Установка на объект</h3>
+                        <p>Монтаж восстановленного элемента с последующей шлифовкой, грунтовкой и окраской под цвет оригинала.</p>
+                        <div class="timeline__meta"><span>🎯 Итоговая точность: ±1–3 мм</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-action">
+                <a href="catalog.html" class="btn btn--primary">Посмотреть примеры в каталоге →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand"><span class="logo__icon">🏛️</span><span>Реставрация.Цифра © 2026</span></div>
+                <div class="footer__links">
+                    <a href="index.html">Главная</a>
+                    <a href="methodology.html">Методика</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="upload.html">Загрузить</a>
+                    <a href="contacts.html">Контакты</a>
+                </div>
+                <div class="footer__license">Модели распространяются под лицензией CC BY-SA 4.0</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

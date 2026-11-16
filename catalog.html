@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог 3D-моделей — Реставрация.Цифра</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <span class="logo__icon">🏛️</span>
+                    <div class="logo__text">
+                        <span class="logo__title">Реставрация.Цифра</span>
+                        <span class="logo__subtitle">Библиотека 3D-моделей</span>
+                    </div>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="nav__link">Главная</a>
+                    <a href="methodology.html" class="nav__link">Методика</a>
+                    <a href="catalog.html" class="nav__link active">Каталог</a>
+                    <a href="analogs.html" class="nav__link">Аналоги</a>
+                    <a href="upload.html" class="nav__link">Загрузить</a>
+                    <a href="contacts.html" class="nav__link">Контакты</a>
+                </nav>
+                <button class="burger" id="burger"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="index.html">Главная</a> <span>/</span> <span>Каталог</span>
+        </div>
+    </div>
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="section__tag">Библиотека</span>
+            <h1 class="page-hero__title">Каталог <span class="accent">3D-моделей</span></h1>
+            <p class="page-hero__text">Выберите категорию, регион или стиль, чтобы найти нужный архитектурный элемент. Все модели доступны для скачивания бесплатно.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="filters">
+                <div class="filter-group">
+                    <label class="filter-label">Категория</label>
+                    <select id="filter-category" class="filter-select">
+                        <option value="all">Все категории</option>
+                        <option value="nalichnik">Наличники</option>
+                        <option value="capital">Капители</option>
+                        <option value="cornice">Карнизы</option>
+                        <option value="frieze">Лепные фризы</option>
+                        <option value="rosette">Розетки</option>
+                        <option value="keystone">Замковые камни</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Регион</label>
+                    <select id="filter-region" class="filter-select">
+                        <option value="all">Все регионы</option>
+                        <option value="moscow">Московская область</option>
+                        <option value="tver">Тверская область</option>
+                        <option value="yaroslavl">Ярославская область</option>
+                        <option value="vologda">Вологодская область</option>
+                        <option value="kostroma">Костромская область</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Стиль</label>
+                    <select id="filter-style" class="filter-select">
+                        <option value="all">Все стили</option>
+                        <option value="classic">Классицизм</option>
+                        <option value="baroque">Барокко</option>
+                        <option value="eclectic">Эклектика</option>
+                        <option value="wooden">Деревянное зодчество</option>
+                        <option value="merchant">Купеческий</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Поиск</label>
+                    <input type="text" id="search-input" class="filter-input" placeholder="🔍 Название...">
+                </div>
+            </div>
+
+            <div class="catalog__toolbar">
+                <span id="results-count" class="results-count">Найдено: 9 моделей</span>
+                <button class="btn btn--outline btn--small" onclick="resetFilters()">Сбросить фильтры</button>
+            </div>
+
+            <div class="models-grid" id="models-grid"></div>
+            <div class="catalog__empty" id="catalog-empty" style="display:none;">
+                <p>😔 По вашему запросу ничего не найдено. Попробуйте изменить фильтры.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="modal">
+        <div class="modal__overlay" id="modal-overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="modal-close">&times;</button>
+            <div class="modal__image" id="modal-image"></div>
+            <div class="modal__body">
+                <span class="modal__badge" id="modal-category"></span>
+                <h2 class="modal__title" id="modal-title"></h2>
+                <div class="modal__meta"><span id="modal-region"></span><span id="modal-style"></span></div>
+                <p class="modal__description" id="modal-description"></p>
+                <div class="modal__specs">
+                    <div class="spec"><span class="spec__label">Размер:</span><span class="spec__value" id="modal-size"></span></div>
+                    <div class="spec"><span class="spec__label">Материал оригинала:</span><span class="spec__value" id="modal-material"></span></div>
+                    <div class="spec"><span class="spec__label">Формат файла:</span><span class="spec__value" id="modal-format"></span></div>
+                    <div class="spec"><span class="spec__label">Точность:</span><span class="spec__value" id="modal-accuracy"></span></div>
+                </div>
+                <div class="modal__actions">
+                    <button class="btn btn--primary" onclick="downloadModel()">⬇ Скачать STL</button>
+                    <button class="btn btn--secondary" onclick="downloadModel()">⬇ Скачать OBJ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand"><span class="logo__icon">🏛️</span><span>Реставрация.Цифра © 2026</span></div>
+                <div class="footer__links">
+                    <a href="index.html">Главная</a>
+                    <a href="methodology.html">Методика</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="upload.html">Загрузить</a>
+                    <a href="contacts.html">Контакты</a>
+                </div>
+                <div class="footer__license">Модели распространяются под лицензией CC BY-SA 4.0</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="catalog.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
